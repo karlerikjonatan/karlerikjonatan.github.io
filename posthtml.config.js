@@ -6,6 +6,5 @@ module.exports = {
       doctype: "HTML 5",
     },
     "posthtml-include": {},
-    "posthtml-modules": {},
   },
 };
