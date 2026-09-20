@@ -20,9 +20,12 @@ jobs:
         run: curl -fsSL https://raw.githubusercontent.com/karlerikjonatan/karlerikjonatan/main/README.md -o README.md
 
       - name: Render Markdown via GitHub API
+        env:
+          GH_TOKEN: ${{ github.token }}
         run: |
           jq -Rs --arg ctx "karlerikjonatan/karlerikjonatan" '{text: ., mode: "gfm", context: $ctx}' README.md \
             | curl -fsSL -X POST https://api.github.com/markdown \
+                -H "Authorization: Bearer ${GH_TOKEN}" \
                 -H "Accept: application/vnd.github+json" \
                 -H "Content-Type: application/json" \
                 -d @- -o body.html
