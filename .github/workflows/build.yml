@@ -1,11 +1,7 @@
 name: Build page from README
 
 on:
-  repository_dispatch:
-    types: [readme-updated]
   workflow_dispatch: {}
-  schedule:
-    - cron: '0 6 * * *'
 
 permissions:
   contents: write
